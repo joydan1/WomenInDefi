@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GroupA Digital Team</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      
+      /*  Animation*/
+      @keyframes slide-up {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .animate-slide-up {
+        animation: slide-up 0.6s ease-out forwards;
+      }
+
+   
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .animate-fade {
+        animation: fade-in 1s ease-out forwards;
+      }
+
+      @keyframes bounce-in {
+        0%,
+        100% {
+          transform: scale(0.95);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .animate-bounce-in {
+        animation: bounce-in 0.6s ease-out forwards;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-tr from-orange-50 via-pink-50 to-yellow-50 text-gray-800 font-sans">
+
+        <!-- Navbar -->
+    <nav class="flex items-center justify-between p-6 bg-white/90 shadow-md fixed w-full top-0 z-40">
+      <div class="text-2xl font-bold text-pink-500">GroupA</div>
+      <ul class="flex gap-6 text-sm font-medium">
+        <li><a href="#about" class="hover:text-pink-500">About</a></li>
+        <li><a href="#services" class="hover:text-pink-500">Services</a></li>
+        <li><a href="#contact" class="hover:text-pink-500">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- first section-->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-32">
+      <h1 class="text-4xl sm:text-5xl font-bold text-pink-600 mb-4 animate-slide-up">Build Brighter Ideas with GroupA</h1>
+      <p class="text-lg max-w-xl mb-6 animate-fade">We craft beautiful, fast, and user-friendly websites to bring your brand to life.</p>
+      <a href="#contact" class="bg-blue-500 text-white py-2 px-5 rounded-full hover:bg-pink-600 transition animate-bounce-in">
+        Let’s Work Together
+      </a>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="max-w-4xl mx-auto py-16 px-6 text-center">
+      <h2 class="text-3xl font-bold text-pink-500 mb-4 animate-slide-up">Who We Are</h2>
+      <p class="animate-fade">
+        GroupA is a creative team  dedicated to helping startups and small businesses grow online.
+        With a passion for clean design and effective strategies, we turn your ideas into reality,
+        by implementing our finest designs into your works.
+      </p>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="bg-white py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-pink-500 mb-10 animate-slide-up">Our Services</h2>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="p-6 bg-orange-200 rounded-lg shadow-md animate-fade">
+            <h3 class="text-xl font-bold mb-2">Web Design</h3>
+            <p>Responsive, modern, beautiful pages that works across all screens.</p>
+          </div>
+          <div class="p-6 bg-pink-100 rounded-lg shadow-md animate-fade delay-200">
+            <h3 class="text-xl font-bold mb-2"> Web Development</h3>
+            <p>From HTML & Tailwind css, we build it clean and fast while improving and would soon include javascript. stay tunned!</p>
+          </div>
+          <div class="p-6 bg-yellow-100 rounded-lg shadow-md animate-fade delay-300">
+            <h3 class="text-xl font-bold mb-2"> Branding</h3>
+            <p>Visual identity, logo design, and colors that reflect your brand’s voice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 px-6 bg-gradient-to-br from-pink-100 via-purple-50 to-pink-100">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-pink-500 mb-2 animate-slide-up">Stay in the Touch!</h2>
+        <p class="mb-6 text-gray-700 animate-fade">Subscribe to get updates, tips, and the latest from GroupA.</p>
+
+        <form class="flex flex-col sm:flex-row gap-3 justify-center animate-bounce-in">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="px-4 py-2 rounded-full border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 px-6 bg-white/80">
+      <div class="max-w-lg mx-auto text-center">
+        <h2 class="text-3xl font-bold text-pink-500 mb-4 animate-slide-up">Let’s Talk</h2>
+        <p class="mb-6 animate-fade">Want to start a project or ask a question? Reach out today!</p>
+        <a href="mailto:hello@GroupA.com"
+          class="bg-pink-500 text-white py-2 px-6 rounded-full hover:bg-pink-600 animate-bounce-in">
+          hello@GroupA.com
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-sm text-gray-600">
+      © 2025 joy. All rights reserved.
+    </footer>
+
+   
+  </body>
+</html>

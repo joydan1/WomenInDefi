@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+     
+     <title>Todo Webpage</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <h1>Todo Webpage</h1>
+ <!-- Navigation Menu is used for easy movement around the page, linking each section together. in other words, you can click and move to-->
+   <nav> 
+    <a href="#add"> Add Todo</a> |
+    <a href="#view"> View Todos</a> |
+    <a href="#edit"> Edit Todo</a>
+</nav>
+    <!--this is the  Add Todo Section -->
+     <section id="add">
+         <h2>Add Todo</h2>
+         <form>
+             <label for="title">Title*</label>
+             <input type="text" id="title" required placeholder="Enter title">
+             <br><br>
+    <label for="desc">Description</label>
+     <textarea id="desc" rows="3" placeholder="Optional description"></textarea>
+     <!--the textarea is used so the box can be big enough to contain whatever is been described-->
+     <br>
+    <label for="date">Due Date</label>
+     <input type="date" id="date">
+     <br>
+    <label for="priority">Priority</label>
+     <select id="priority">
+         <option value="">--Select--</option>
+          <option>Low</option>
+           <option>Medium</option>
+            <option>High</option>
+         </select>
+         <br>
+    <button type="submit">Save</button>
+ </form>
+ </section>
+    <!--this is the  View Todos Section, where all the listed task will appear, the ones with highpriority, the due ones etc-->
+     <section id="view">
+         <h2>View Todos</h2>
+          <input type="text" placeholder="Search tasks...">
+          <br><br>
+    <table>
+        <thead>
+             <tr>
+                <th>Title</th><th>Description</th><th>Due</th><th>Priority</th><th>Status</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                 <td>Complete Project</td>
+                  <td>Finish by Friday</td>
+                  <td>2025-06-23</td>
+                  <td>High</td>
+                  <td><span class="status-badge pending">Pending</span></td>
+                  <td><a href="#edit">Edit</a></td>
+                 </tr>
+                 </tbody>
+                 </table> 
+                </section>
+    <!-- this is the Edit Todo Section, decided to bring everything to one file  -->
+      <section id="edit">
+        <h2>Edit Todo</h2>
+        <form>
+            <label for="etitle">Title*</label>
+             <input type="text" id="etitle" required value="Complete Project">
+             <br>
+    <label for="edesc">Description</label>
+    <textarea id="edesc" rows="3">Finish by Friday</textarea>
+    <br>
+     <label for="edate">Due Date</label>
+     <input type="date" id="edate" value="2025-06-23">
+     <br>
+    <label for="epriority">Priority</label>
+    <select id="epriority">
+         <option>Low</option>
+         <option>Medium</option>
+          <option selected>High</option>
+        </select>
+        <br>
+     <button type="submit">Save Changes</button>
+      <button type="button" onclick="location.href='#view'">Cancel</button>
+    </form>
+</section>
+    </body>
+    </html>
