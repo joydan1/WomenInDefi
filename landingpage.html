@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       
-      /*  Animation*/
+      /*  Animation- this part is just for styling, the fade in,bounce in, slide up is being used here*/
       @keyframes slide-up {
         0% {
           transform: translateY(20px);
@@ -54,12 +54,14 @@
       }
     </style>
   </head>
-
+<!--i gavea the body a kind of soft gradient since imnot so good at picking colours, learnt from a video on youtube -->
   <body class="bg-gradient-to-tr from-orange-50 via-pink-50 to-yellow-50 text-gray-800 font-sans">
 
-        <!-- Navbar -->
+        <!--  this is the Navigation barsection, appears on the top right part, where you can click to take you to 
+          other part of the page instead of scrolling, white background so text is visible -->
     <nav class="flex items-center justify-between p-6 bg-white/90 shadow-md fixed w-full top-0 z-40">
       <div class="text-2xl font-bold text-pink-500">GroupA</div>
+      <!--the linking part -->
       <ul class="flex gap-6 text-sm font-medium">
         <li><a href="#about" class="hover:text-pink-500">About</a></li>
         <li><a href="#services" class="hover:text-pink-500">Services</a></li>
@@ -67,7 +69,7 @@
       </ul>
     </nav>
 
-    <!-- first section-->
+    <!-- first section, the one in the middle that has a brief of this page-->
     <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-32">
       <h1 class="text-4xl sm:text-5xl font-bold text-pink-600 mb-4 animate-slide-up">Build Brighter Ideas with GroupA</h1>
       <p class="text-lg max-w-xl mb-6 animate-fade">We craft beautiful, fast, and user-friendly websites to bring your brand to life.</p>
@@ -76,7 +78,7 @@
       </a>
     </section>
 
-    <!-- About -->
+    <!-- About section is to explain more on what the page is about-->
     <section id="about" class="max-w-4xl mx-auto py-16 px-6 text-center">
       <h2 class="text-3xl font-bold text-pink-500 mb-4 animate-slide-up">Who We Are</h2>
       <p class="animate-fade">
@@ -86,7 +88,7 @@
       </p>
     </section>
 
-    <!-- Services -->
+    <!-- Services section -->
     <section id="services" class="bg-white py-16 px-6">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center text-pink-500 mb-10 animate-slide-up">Our Services</h2>
@@ -107,15 +109,17 @@
       </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Newsletter signup session, similar to the one previously done in the registration form assignment-->
     <section class="py-16 px-6 bg-gradient-to-br from-pink-100 via-purple-50 to-pink-100">
       <div class="max-w-xl mx-auto text-center">
         <h2 class="text-3xl font-bold text-pink-500 mb-2 animate-slide-up">Stay in the Touch!</h2>
         <p class="mb-6 text-gray-700 animate-fade">Subscribe to get updates, tips, and the latest from GroupA.</p>
 
         <form class="flex flex-col sm:flex-row gap-3 justify-center animate-bounce-in">
-          <input
-            type="email"
+          <!--the email entry part, for record purpose, a placeholder is used so users can know what format is accepted
+          and not just input random things-->
+          <input 
+          type="email"
             placeholder="Enter your email"
             class="px-4 py-2 rounded-full border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
             required
@@ -130,7 +134,7 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact section-->
     <section id="contact" class="py-16 px-6 bg-white/80">
       <div class="max-w-lg mx-auto text-center">
         <h2 class="text-3xl font-bold text-pink-500 mb-4 animate-slide-up">Let’s Talk</h2>
@@ -142,7 +146,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer which is the bottom part . the end -->
     <footer class="text-center py-6 text-sm text-gray-600">
       © 2025 joy. All rights reserved.
     </footer>
