@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML ASSIGNMENT</title>
+    </head>
+    <body>
+        <h2>Form that accepts all Input Types</h2>
+        <Form>
+            <p>Full Name</p>
+            <Input Type="text" id="Fullname" Name="Fullname" placeholder="e.g Akpan joy" required>
+                <br><br>
+                <!--the id used here gives the name input a unique id, the name is to tell the server the value-->
+                <!--will be introducing the label tag which is to associate text with form inputs-->
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"required minlength="8">
+                <br><br>
+                <!--i made the password box accept a min of 8, which means anything less than 8, the form wont submit-->
+                <label for="email"> Email:</label>
+                <input type="email" id="email" name="email" placeholder="e.g jay@example.com" required>
+                <br><br>
+                <!--added a sample mail and made it required-->
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website" placeholder="hhts://example.com">
+                <br><br>
+               <!--swapping back to p for cus i feel label its tiring to write tho it allows the text stay side by side and not above,looks more nice too--> 
+               <label for="phone number"> Number:</label>
+               <input type="tel" value="phone number" name="phone" placeholder="08000000000" pattern="[0-9]{11}" required>
+               <br><br>
+               <!--the pattern used here is to allowonly 0-9 and number must 11-->
+               <label for="age">Age:</label>
+               <input type="number" id="age" name="age" min="10" max="200" required>
+               <br><br>
+               <!--min age allowed to fill this form is 10yrs else form wont accept it-->
+               <label for="satisfaction">satisfaction level:</label>
+               <input type="range" id="satisfation" name="satisfaction" min="0" max="10">
+               <br><br>
+               <label for ="date of birth">date of birth:</label>
+               <input type="date" id="date of birth" name="date of birth" required>
+               <br><br>
+
+               <label for="meeting time"> preferred  time:</label>
+               <input type="time" id="meeting time" name="meeting time">
+               <br><br>
+
+               <label for="meeting month"> preferred month:</label>
+               <input type="month" id="meeting month" name="meeting month">
+               <br><br>
+
+               <label for="subscribe">subscribe to newsletter:</label>
+               <input type="checkbox" id="subscribe" name="subscribe">
+               <br><br>
+<!--introduced the checkbox instead of typing in an email-->
+<label for="profile picture"> upload profile picture:</label>
+               <input type="file" id="profile picture" name="profile picture" accept=".png, .jpg" required> 
+               <br><br>
+<button>
+    submit form
+</button>
+            </form>
+
+        </body>
+        </html>
+

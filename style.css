@@ -1,0 +1,33 @@
+.header1{
+    color: yellow;
+text-align: left;
+border: 2px dash red;
+padding: 10px;
+}
+
+.header2{
+    color: brown;
+    border: 2px solid green;
+    padding: 5px;
+}
+.header3{
+    color: purple;
+    background-color: aliceblue;
+    border:3px dotted darkblue;
+}
+#greetings {
+    color: indigo;
+    text-align: right;
+    background-color: powderblue;
+    border: 5px groove red;
+    margin: 10px;
+    height: 80px;
+    width: 300px;
+}
+#program {
+    color: blueviolet;
+    text-decoration: line-through;
+    border: 3px;
+    text-transform: capitalize;
+    
+}

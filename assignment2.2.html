@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> mrs. simbi's booking form</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body class="bg-purple-100 flex items-center justify-center min-h-screen">
+        <div class="bg-white-p-8 rounded-2xl shadow-xl w-full max-w-lg">
+        <h3 class="text-2xl font-bold mb-6 text-gray-800"> Mrs. Simbi's Catering Booking Form</h3>
+        <form class="max-w-md mx-auto bg-white-p-4 rounded shadow">
+            </div>
+            <label for="customer name">Full Name:</label>
+            <input type="text" id="customer name" name="customer name" placeholder="e.g joy dan" required>
+            <br><br>
+            <!--same as first assignment-->
+            <label for="customer phone number">Customer phone numer:</label>
+            <input type="tel" id="customer phone number" name="customer phone number" placeholder="e.g 09052727287" pattern="[0-9]{11}" required>
+            <br><br>
+            <!--next is email-->
+
+        <label for="customer email">Customer email address:</label>
+        <input type="email" id="customer email" name="customer email" placeholder="e.g myemail@example.com" required>
+        <br><br>
+
+        <label for="event time">time of event:</label>
+        <input type="time" id="event time" name="event time" required>
+        <br><br>
+<!--made it required so she doesnot have client with conflicting time-->
+        <label for="number of plates"> Number of plates:</label>
+        <input type="numbers" id="numberof plates" name="number of plates" min="2" max="500" required>
+        <br><br>
+        
+        <label for="food type"> type of food preferred</label><br>
+        <textarea id="food" name="food" rows="5" cols="50" placeholder="list the type of food preferred including drinks"></textarea>
+        <br><br>
+        <!--text area is introduced to make the box bigger unlike the ones used previously which is one line-->
+
+        <label for="address/location"> Delivery address</label> <br>
+        <textarea id="address" name="address" rows="5" cols="50" placeholder="please input a recognized address or a popular landmark for delivery"></textarea>
+        <br><br>
+
+        <label for="subscribe">Booking Confirmation</label>
+        <input type="checkbox" id="name" name="subscribe" checked required>
+        <br><br>
+        <button>
+            submit
+        </button>
+
+
+
+
+        </form>
+        </div>
+    </body>
+</html>
