@@ -1,12 +1,12 @@
-// Global array to store todos
+//  array to store todos and if nothing is saved yet, array is left empty
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-// Utility to save todos
+// save todos by convering arrays to strings and keeps the list orderly
 function saveTodos() {
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-// Add new todo
+// Add new todo and saves it to the main todo
 function addTodo(title, description, dueDate) {
   const todo = {
     id: Date.now(),
@@ -20,14 +20,14 @@ function addTodo(title, description, dueDate) {
   alert("Todo added!");
 }
 
-// Delete all todos
+// Delete all todos 
 function deleteAllTodos() {
   todos = [];
   saveTodos();
   renderTodos(); // For pages that render list
 }
 
-// Mark todo as complete/incomplete
+// to Mark todo as complete/incomplete to allow filtering
 function toggleTodo(id) {
   todos = todos.map(todo => {
     if (todo.id === id) {
