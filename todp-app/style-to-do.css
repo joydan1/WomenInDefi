@@ -1,0 +1,138 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://static01.nyt.com/images/2021/02/07/fashion/NEW-BLUE-1/NEW-BLUE-1-superJumbo.jpg'); /* to add image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+
+    /* Center everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Main container */
+.todo-container {
+    max-width: 700px;
+    width: 90%;
+    background: rgba(0, 0, 50, 0.6); /* or rgba(255,255,255,0.8) for white */
+    padding: 50px;
+    border-radius: 10px;
+    color: white; /* dark text for visibility */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    min-height: 400px; /* taller default box */
+}
+
+/* Title */
+h1 {
+    text-align: center;
+}
+
+/* Input section */
+.input-section {
+    display: flex;
+    gap: 10px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#add-btn {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Filter section */
+.filter-section {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.filter-btn {
+    background: #0056b3;
+    border: none;
+    padding: 8px 12px;
+    margin: 3px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background: #003d80;
+}
+
+/* Task list */
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(252, 247, 247, 0.801); /* semi-transparent white */
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    align-items: center;
+    color: #222; /* dark text for visibility */
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    color: #888; /* gray for completed tasks */
+}
+
+/* Buttons inside each task */
+.complete-btn, .delete-btn {
+    border: none;
+    padding: 6px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.complete-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.complete-btn:hover {
+    background-color: #1e7e34;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    .todo-container {
+        max-width: 95%;
+        padding: 20px;
+        min-height: 300px;
+    }
+}

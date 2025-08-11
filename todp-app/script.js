@@ -1,91 +1,98 @@
-//  array to store todos and if nothing is saved yet, array is left empty
-let todos = JSON.parse(localStorage.getItem('todos')) || [];
+// cache DOM nodes
+const taskInput = document.getElementById('task-input');
+const addBtn = document.getElementById('add-btn');
+const taskList = document.getElementById('task-list');
 
-// save todos by convering arrays to strings and keeps the list orderly
-function saveTodos() {
-  localStorage.setItem('todos', JSON.stringify(todos));
+// create a task <li> element (separated so structure is consistent)
+function createTaskElement(text) {
+  const li = document.createElement('li');
+  li.className = 'task-item';
+
+  const span = document.createElement('span');
+  span.className = 'task-text';
+  span.textContent = text;
+
+  const btns = document.createElement('div');
+  btns.className = 'task-btns';
+
+  const completeBtn = document.createElement('button');
+  completeBtn.type = 'button'; // ensure not treated as submit
+  completeBtn.className = 'complete-btn';
+  completeBtn.textContent = '✓';
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.type = 'button';
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.textContent = '✕';
+
+  btns.appendChild(completeBtn);
+  btns.appendChild(deleteBtn);
+  li.appendChild(span);
+  li.appendChild(btns);
+  return li;
 }
 
-// Add new todo and saves it to the main todo
-function addTodo(title, description, dueDate) {
-  const todo = {
-    id: Date.now(),
-    title,
-    description,
-    dueDate,
-    completed: false
-  };
-  todos.push(todo);
-  saveTodos();
-  alert("Todo added!");
+// add new task to the DOM
+function addTask() {
+  const text = taskInput.value.trim();
+  if (!text) {
+    // small UX hint: focus input
+    taskInput.focus();
+    return;
+  }
+  const li = createTaskElement(text);
+  taskList.appendChild(li);
+  taskInput.value = '';
+  taskInput.focus();
 }
 
-// Delete all todos 
-function deleteAllTodos() {
-  todos = [];
-  saveTodos();
-  renderTodos(); // For pages that render list
-}
+// attach Add listeners
+addBtn.addEventListener('click', addTask);
+taskInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') addTask();
+});
 
-// to Mark todo as complete/incomplete to allow filtering
-function toggleTodo(id) {
-  todos = todos.map(todo => {
-    if (todo.id === id) {
-      todo.completed = !todo.completed;
-    }
-    return todo;
+// EVENT DELEGATION: single listener for complete/delete
+taskList.addEventListener('click', (e) => {
+  const target = e.target;
+
+  // If user clicked the complete button
+  if (target.matches('.complete-btn')) {
+    const li = target.closest('.task-item');
+    if (!li) return;
+    // toggle completed class on the li (CSS handles text strike-through)
+    li.classList.toggle('completed');
+    return;
+  }
+
+  // If user clicked the delete button
+  if (target.matches('.delete-btn')) {
+    const li = target.closest('.task-item');
+    if (!li) return;
+
+    // small fade out before removing (trying out things)
+    li.style.transition = 'opacity 180ms ease, transform 180ms ease';
+    li.style.opacity = '0';
+    li.style.transform = 'translateY(-6px)';
+    setTimeout(() => li.remove(), 180);
+    return;
+  }
+});
+
+// Add this after your other event listeners
+const filterSection = document.querySelector('.filter-section');
+if (filterSection) {
+  filterSection.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('filter-btn')) return;
+    const filter = e.target.dataset.filter; // 'all', 'completed', 'incomplete'
+    Array.from(taskList.children).forEach(li => {
+      if (filter === 'all') {
+        li.style.display = '';
+      } else if (filter === 'completed') {
+        li.style.display = li.classList.contains('completed') ? '' : 'none';
+      } else if (filter === 'incomplete') {
+        li.style.display = li.classList.contains('completed') ? 'none' : '';
+      }
+    });
   });
-  saveTodos();
-  renderTodos();
-}
-
-// Render todos to the UI
-function renderTodos(filter = "") {
-  const list = document.getElementById("todo-list");
-  if (!list) return;
-
-  list.innerHTML = "";
-
-  const filtered = todos.filter(todo => {
-    if (filter === "completed") return todo.completed;
-    if (filter === "pending") return !todo.completed;
-    return true;
-  });
-
-  filtered.forEach(todo => {
-    const li = document.createElement("li");
-    li.textContent = `${todo.title} - ${todo.description} - Due: ${todo.dueDate}`;
-    li.style.textDecoration = todo.completed ? "line-through" : "none";
-
-    li.onclick = () => toggleTodo(todo.id);
-    list.appendChild(li);
-  });
-
-  document.querySelector(".counter-container span").textContent = filtered.length;
-}
-
-// Populate form for editing
-function loadTodoForEdit(id) {
-  const todo = todos.find(t => t.id === Number(id));
-  if (!todo) return;
-
-  document.querySelector('input[name="title"]').value = todo.title;
-  document.querySelector('input[name="description"]').value = todo.description;
-  document.querySelector('input[name="due-date"]').value = todo.dueDate;
-
-  document.getElementById("update-button").onclick = function () {
-    todo.title = document.querySelector('input[name="title"]').value;
-    todo.description = document.querySelector('input[name="description"]').value;
-    todo.dueDate = document.querySelector('input[name="due-date"]').value;
-    saveTodos();
-    alert("Todo updated!");
-    location.href = "View-todo.html";
-  };
-}
-
-// Search function
-function searchTodos(query) {
-  return todos.filter(todo =>
-    todo.title.toLowerCase().includes(query.toLowerCase())
-  );
 }
