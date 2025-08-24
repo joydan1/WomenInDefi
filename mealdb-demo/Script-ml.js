@@ -137,6 +137,10 @@ sendFeedbackBtn.addEventListener("click", async () => {
     alert("Please enter feedback before sending!");
     return;
   }
+  const feedbackData = {
+    name: "username",
+    feedback: feedback,
+  };
 
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
