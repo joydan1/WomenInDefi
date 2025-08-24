@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Meal Api</title>
+  <link rel="stylesheet" href="Style-ml.css">
+</head>
+<body>
+  <header>
+    <h1>Myfood by J</h1>
+    <p>Discover meals from around the world in one click</p>
+    <button id="darkModeToggle">🌙 </button>
+  </header>
+
+  <main>
+    <section class="controls">
+      <input type="number" id="mealCount" placeholder="Enter number of meals" min="1" required>
+      <button id="fetchMeals">Get Meals</button>
+    </section>
+
+    <section id="mealsContainer"></section>
+  </main>
+
+  <!-- this is to hide the oopup till it clicked and avoid automatic display on screen) -->
+  <div id="mealModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="mealTitle"></h2>
+      <img id="mealImg" src="" alt="Meal Image">
+      <p><strong>Category:</strong> <span id="mealCategory"></span></p>
+      <p><strong>Area:</strong> <span id="mealArea"></span></p>
+      <p><strong>Ingredients:</strong></p>
+      <ul id="mealIngredients"></ul>
+      <p><strong>Instructions:</strong></p>
+      <p id="mealInstructions"></p>
+      <div class="modal-buttons">
+        <button id="prevMeal">⬅ Previous</button>
+        <button id="nextMeal">Next Meal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Section -->
+  <section class="feedback">
+    <h2>Post Feedback</h2>
+    <textarea id="feedbackInput" placeholder="Type your feedback..."></textarea>
+    <button id="sendFeedback">Post Feedback</button>
+  </section>
+
+  
+
+  <script src="Script-ml.js"></script>
+</body>
+</html>
