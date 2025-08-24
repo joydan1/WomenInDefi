@@ -22,7 +22,7 @@
     <section id="mealsContainer"></section>
   </main>
 
-  <!-- this is to hide the oopup till it clicked and avoid automatic display on screen) -->
+  <!-- this is to hide the popup till it clicked and avoid automatic display on screen) -->
   <div id="mealModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -35,7 +35,7 @@
       <p><strong>Instructions:</strong></p>
       <p id="mealInstructions"></p>
       <div class="modal-buttons">
-        <button id="prevMeal">⬅ Previous</button>
+        <button id="prevMeal"> Previous</button>
         <button id="nextMeal">Next Meal</button>
       </div>
     </div>
@@ -44,10 +44,14 @@
   <!-- Feedback Section -->
   <section class="feedback">
     <h2>Post Feedback</h2>
+    <input type="text" id="username" placeholder="Your Name" required>
+    <br><br>
     <textarea id="feedbackInput" placeholder="Type your feedback..."></textarea>
     <button id="sendFeedback">Post Feedback</button>
   </section>
-
+<div id="feedbackPopup" class="feedback-popup hidden ">
+<p>Thank you for your feedback</p>
+</div>
   
 
   <script src="Script-ml.js"></script>

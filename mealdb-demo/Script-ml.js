@@ -14,13 +14,13 @@ const prevMealBtn = document.getElementById("prevMeal");
 const nextMealBtn = document.getElementById("nextMeal");
 
 const feedbackInput = document.getElementById("feedbackInput");
+const username = document.getElementById("username");
 const sendFeedbackBtn = document.getElementById("sendFeedback");
 
 let mealsData = [];
 let currentMealIndex = 0;
 
-
-// Fetch random meals from api
+// Fetch random meals from API
 async function fetchRandomMeals(count) {
   mealsContainer.innerHTML = "Loading meals...";
   let meals = [];
@@ -48,7 +48,7 @@ function displayMeals(meals) {
   });
 }
 
-// Open meal details by clicking on meal
+// Open meal modal
 function openMealModal(index) {
   currentMealIndex = index;
   const meal = mealsData[index];
@@ -72,7 +72,7 @@ function openMealModal(index) {
   mealModal.style.display = "block";
 }
 
-// Close popup by clicking on the x icon on the pop up
+// Close modal
 closeModal.addEventListener("click", () => {
   mealModal.style.display = "none";
 });
@@ -82,7 +82,7 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Next & Previous buttons for easy movement incase user enters large numbers
+// Next / Prev meal navigation
 nextMealBtn.addEventListener("click", () => {
   currentMealIndex = (currentMealIndex + 1) % mealsData.length;
   openMealModal(currentMealIndex);
@@ -99,12 +99,11 @@ darkModeToggle.addEventListener("click", () => {
   if (document.body.classList.contains("dark-mode")) {
     darkModeToggle.textContent = "☀️";
   } else {
-    darkModeToggle.textContent = "🌙 ";
+    darkModeToggle.textContent = "🌙";
   }
 });
 
-
-// button click
+// Validate meal count
 function isValidCount(value) {
   const n = Number(value);
   return Number.isInteger(n) && n > 0;
@@ -114,51 +113,68 @@ function updateFetchButtonState() {
   fetchMealsBtn.disabled = !isValidCount(mealCountInput.value);
 }
 
-// Keep the button disabled until the input is valid like when a user ebter 0 or an alphabet 
 mealCountInput.addEventListener("input", updateFetchButtonState);
 updateFetchButtonState();
 
-// this part helps when a user doesn't input anything,it shouldn't give aby result
+// Fetch meals button
 fetchMealsBtn.addEventListener("click", () => {
   const count = Number(mealCountInput.value);
 
   if (!Number.isInteger(count) || count <= 0) {
-    alert("Please enter a valid positive number of meals.");
-    return; 
+    showFeedbackPopup(" Please enter a valid positive number of meals.");
+    return;
   }
 
   fetchRandomMeals(count);
 });
 
-// Feedback POST request, from class slide with few additions from youtube
+// Feedback popup function
+function showFeedbackPopup(message) {
+  const popup = document.getElementById("feedbackPopup");
+  popup.querySelector("p").textContent = message;
+  popup.classList.remove("hidden");
+
+  // Animate in
+  setTimeout(() => popup.classList.add("show"), 50);
+
+  // Hide after 3 seconds
+  setTimeout(() => {
+    popup.classList.remove("show");
+    setTimeout(() => popup.classList.add("hidden"), 400);
+  }, 3000);
+}
+
+// Feedback submission
 sendFeedbackBtn.addEventListener("click", async () => {
   const feedback = feedbackInput.value.trim();
-  if (!feedback) {
-    alert("Please enter feedback before sending!");
+  const user = username.value.trim();
+
+  if (!user || !feedback) {
+    showFeedbackPopup("Please enter both username and feedback!");
     return;
   }
+
   const feedbackData = {
-    name: "username",
+    name: user,
     feedback: feedback,
   };
 
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
-      body: JSON.stringify({
-        feedback: feedback,
-        user: "Guest"
-      }),
-      headers: { "Content-type": "application/json; charset=UTF-8" }
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+      body: JSON.stringify(feedbackData),
     });
 
     const data = await response.json();
     console.log("Feedback Sent:", data);
 
-    alert(" Feedback sent successfully!");
     feedbackInput.value = "";
+    username.value = "";
+
+    showFeedbackPopup("Feedback sent successfully!");
   } catch (error) {
     console.error("Error sending feedback:", error);
-    alert("Failed to send feedback. Try again.");
+    showFeedbackPopup("Failed to send feedback. Try again.");
   }
 });

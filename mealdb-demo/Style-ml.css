@@ -123,8 +123,23 @@ header {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
-}
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
 
+}
+.modal-buttons.prev, .modal-buttons.next {
+  padding: 8px 15px;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.modal-buttons.prev, .modal-buttons.next:hover {
+  background: #003f66;
+
+}
 .feedback {
   margin: 20px;
   text-align: center;
@@ -132,11 +147,27 @@ header {
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  padding: 15px;
+  border: 0.5px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+
 
 }
 .feedback textarea {
   width: 300px;     
   height: 50px;     
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  resize: vertical; 
+  position: center;
+
+}
+.feedback input {
+  width: 100px;     
+  height: 20px;     
   padding: 8px;
   font-size: 14px;
   border-radius: 6px;
@@ -154,6 +185,28 @@ header {
   border-radius: 8px;
   cursor: pointer;
 }
+.feedback-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.feedback-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hidden {
+  display: none;
+}
 
 /* Dark mode */
 .dark-mode {
@@ -167,3 +220,7 @@ header {
   background: #1e1e1e;
   color: white;
   }
+.dark-mode .modal-content {
+  background: #1e1e1e;
+  color: white;
+} 
