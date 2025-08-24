@@ -58,6 +58,7 @@ function openMealModal(index) {
   mealArea.textContent = meal.strArea;
   mealIngredients.innerHTML = "";
 
+  // Ingredients
   for (let i = 1; i <= 20; i++) {
     const ingredient = meal[`strIngredient${i}`];
     const measure = meal[`strMeasure${i}`];
@@ -68,9 +69,22 @@ function openMealModal(index) {
     }
   }
 
-  mealInstructions.textContent = meal.strInstructions;
+  // write Instructions as list
+  mealInstructions.innerHTML = "";
+  const steps = meal.strInstructions
+    .split(/[\r\n]+/)   // split by line breaks
+    .map(step => step.trim().replace(/^\d+\.\s*/, '')) // remove leading numbers so i have just the right numbering
+    .filter(step => step.length > 0);
+
+  steps.forEach(step => {
+    const li = document.createElement("li");
+    li.textContent = step;
+    mealInstructions.appendChild(li);
+  });
+
   mealModal.style.display = "block";
 }
+
 
 // Close modal
 closeModal.addEventListener("click", () => {
